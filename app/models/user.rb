@@ -3,7 +3,7 @@ class User
     uri = URI.parse(ENV['DATABASE_URL'])
     DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
   else
-    DB = PG.connect({:host => 'localhost', :port => 5432, :dbname => '_fb_api_development'})
+    DB = PG.connect(:host => 'localhost', :port => 5432, :dbname => '_fb_api_development')
   end
   def self.all
     results = DB.exec(
