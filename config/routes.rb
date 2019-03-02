@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   # SHOW ROUTE
   get '/posts/:id', to: 'posts#show'
 
+  # CREATE ROUTE
+  post '/posts', to: 'posts#create'
+
 end

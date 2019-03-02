@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   # index route
   def index
     render json: Post.all
@@ -7,6 +8,11 @@ class PostsController < ApplicationController
   # show route
   def show
     render json: Post.find(params["id"])
+  end
+
+  # create route
+  def create
+    render json: Post.create(params["post"])
   end
 
 end
