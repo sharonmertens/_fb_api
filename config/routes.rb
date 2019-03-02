@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   # DELETE ROUTE
   delete '/posts/:id', to: 'posts#delete'
 
+  # UPDATE ROUTE
+  put '/posts/:id', to: 'posts#update'
+
 end

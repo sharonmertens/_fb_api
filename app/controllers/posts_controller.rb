@@ -20,4 +20,9 @@ class PostsController < ApplicationController
     render json: Post.delete(params["id"])
   end
 
+  # update route
+  def update
+    render json: Post.update(params["id"], params["post"])
+  end
+
 end

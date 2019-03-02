@@ -63,5 +63,26 @@ class Post
     return { "deleted" => true }
   end # ends self.delete
 
+  # UPDATE
+  def self.update(id, opts)
+    results = DB.exec(
+      <<-SQL
+        UPDATE posts
+        SET text='#{opts["text"]}', image='#{opts["image"]}', link='#{opts["link"]}', likes='#{opts["likes"]}', dislikes='#{opts["dislikes"]}', author='#{opts["author"]}'
+        WHERE id=#{id}
+        RETURNING id, text, image, link, likes, dislikes, author;
+      SQL
+    )
+    return {
+      "id" => results.first["id"].to_i,
+      "text" => results.first["text"],
+      "image" => results.first["image"],
+      "link" => results.first["link"],
+      "likes" => results.first["likes"],
+      "dislikes" => results.first["dislikes"],
+      "author" => results.first["author"]
+    }
+  end # ends self.update
+
 
 end # ends post class
