@@ -57,5 +57,11 @@ class Post
     }
   end # ends self.create
 
+  # DELETE
+  def self.delete(id)
+    results = DB.exec("DELETE FROM posts WHERE id=#{id};")
+    return { "deleted" => true }
+  end # ends self.delete
+
 
 end # ends post class

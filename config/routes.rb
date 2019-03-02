@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   # CREATE ROUTE
   post '/posts', to: 'posts#create'
 
+  # DELETE ROUTE
+  delete '/posts/:id', to: 'posts#delete'
+
 end
