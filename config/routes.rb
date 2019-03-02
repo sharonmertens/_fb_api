@@ -11,6 +11,11 @@ Rails.application.routes.draw do
 
   put '/users/:id', to: 'users#update'
 
-  
+  # ------------------------
+  #      POSTS ROUTES      #
+  # ------------------------
+
+  # INDEX ROUTE
+  get '/posts', to: 'posts#index'
 
 end
