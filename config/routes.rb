@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   # INDEX ROUTE
   get '/posts', to: 'posts#index'
 
+  # SHOW ROUTE
+  get '/posts/:id', to: 'posts#show'
+
 end
