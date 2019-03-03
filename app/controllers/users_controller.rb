@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+  # LOGIN user
+  def login
+    user = User.find_by(username: params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
+      render json: {status: 200, user: user}
+    else
+      render json: {status: 401, message: "Unauthorized"}
+    end
+  end
+
   # GET /users
   def index
     @users = User.all
@@ -48,4 +58,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password_digest)
     end
+
+
 end
