@@ -54,6 +54,22 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def create_token(id, username)
+      JWT.encod(payload(id, username), ENV['JWT_SECRET'], 'HS256')
+    end
+
+    def payoload(id, username)
+      {
+        exp: (Time.now + 30.minutes).to_i,
+        iat: Time.now.to_i,
+        iss: ENV['JWT_ISSUER'],
+        user: {
+          id: id,
+          username: username
+        }
+      }
+    end
+
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:username, :password_digest)
