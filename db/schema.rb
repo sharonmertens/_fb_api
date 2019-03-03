@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 2019_03_02_015010) do
     t.string "author", limit: 256
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "users", id: false, force: :cascade do |t|
+    t.serial "id", null: false
+    t.string "username", limit: 30
+    t.date "created_at", null: false
+    t.date "modified_at", null: false
+    t.string "password_digest", limit: 72
   end
 
 end
