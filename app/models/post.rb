@@ -42,7 +42,7 @@ class Post
     results = DB.exec(
       <<-SQL
         INSERT INTO posts (text, image, link, likes, dislikes, author)
-        VALUES ('#{opts["text"]}', '#{opts["image"]}', '#{opts["link"]}', '#{opts["likes"]}', '#{opts["dislikes"]}', '#{opts["author"]}')
+        VALUES ('#{opts["text"]}', '#{opts["image"]}', '#{opts["link"]}', #{opts["likes"]}, #{opts["dislikes"]}, '#{opts["author"]}')
         RETURNING id, text, image, link, likes, dislikes, author
       SQL
     )
@@ -68,7 +68,7 @@ class Post
     results = DB.exec(
       <<-SQL
         UPDATE posts
-        SET text='#{opts["text"]}', image='#{opts["image"]}', link='#{opts["link"]}', likes='#{opts["likes"]}', dislikes='#{opts["dislikes"]}', author='#{opts["author"]}'
+        SET text='#{opts["text"]}', image='#{opts["image"]}', link='#{opts["link"]}', likes=#{opts["likes"]}, dislikes=#{opts["dislikes"]}, author='#{opts["author"]}'
         WHERE id=#{id}
         RETURNING id, text, image, link, likes, dislikes, author;
       SQL
