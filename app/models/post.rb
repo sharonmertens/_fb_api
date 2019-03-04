@@ -16,8 +16,8 @@ class Post
         "text" => result["text"],
         "image" => result["image"],
         "link" => result["link"],
-        "likes" => result["likes"],
-        "dislikes" => result["dislikes"],
+        "likes" => result["likes"].to_i,
+        "dislikes" => result["dislikes"].to_i,
         "author" => result["author"]
       }
     end # ends map do
@@ -31,8 +31,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.find
@@ -42,7 +42,7 @@ class Post
     results = DB.exec(
       <<-SQL
         INSERT INTO posts (text, image, link, likes, dislikes, author)
-        VALUES ('#{opts["text"]}', '#{opts["image"]}', '#{opts["link"]}', '#{opts["likes"]}', '#{opts["dislikes"]}', '#{opts["author"]}')
+        VALUES ('#{opts["text"]}', '#{opts["image"]}', '#{opts["link"]}', #{opts["likes"]}, #{opts["dislikes"]}, '#{opts["author"]}')
         RETURNING id, text, image, link, likes, dislikes, author
       SQL
     )
@@ -51,8 +51,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.create
@@ -68,7 +68,7 @@ class Post
     results = DB.exec(
       <<-SQL
         UPDATE posts
-        SET text='#{opts["text"]}', image='#{opts["image"]}', link='#{opts["link"]}', likes='#{opts["likes"]}', dislikes='#{opts["dislikes"]}', author='#{opts["author"]}'
+        SET text='#{opts["text"]}', image='#{opts["image"]}', link='#{opts["link"]}', likes=#{opts["likes"]}, dislikes=#{opts["dislikes"]}, author='#{opts["author"]}'
         WHERE id=#{id}
         RETURNING id, text, image, link, likes, dislikes, author;
       SQL
@@ -78,8 +78,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.update
