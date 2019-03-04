@@ -16,8 +16,8 @@ class Post
         "text" => result["text"],
         "image" => result["image"],
         "link" => result["link"],
-        "likes" => result["likes"],
-        "dislikes" => result["dislikes"],
+        "likes" => result["likes"].to_i,
+        "dislikes" => result["dislikes"].to_i,
         "author" => result["author"]
       }
     end # ends map do
@@ -31,8 +31,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.find
@@ -51,8 +51,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.create
@@ -78,8 +78,8 @@ class Post
       "text" => results.first["text"],
       "image" => results.first["image"],
       "link" => results.first["link"],
-      "likes" => results.first["likes"],
-      "dislikes" => results.first["dislikes"],
+      "likes" => results.first["likes"].to_i,
+      "dislikes" => results.first["dislikes"].to_i,
       "author" => results.first["author"]
     }
   end # ends self.update
