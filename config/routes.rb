@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   #      AUTHENTICATION      #
   # ------------------------
 
+
   resources :users do
     collection do
       post '/login', to: 'users#login'
+
+      post '/register', to: 'users#register'
+
     end
   end
 

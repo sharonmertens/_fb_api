@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_token, except: [:login, :create]
-  before_action :authorize_user, except: [:login, :create, :index]
+  before_action :authenticate_token, except: [:login, :register]
+  before_action :authorize_user, except: [:login, :register, :index]
+  # before_action :authenticate_user!, except: [:new, :register]
 
   # GET /users
   def index
@@ -16,11 +17,12 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  def create
-    @user = User.new(user_params)
+  def register
+    @user = User.new(reg_user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      response = {message: 'user created'}
+      render json: response, status: :crated
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -76,4 +78,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password_digest)
     end
+
+    def reg_user_params
+      params.permit(:username, :password)
+    end
+
+
+
 end
