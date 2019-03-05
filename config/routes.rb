@@ -1,15 +1,27 @@
 Rails.application.routes.draw do
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/users', to: 'users#index'
+  # ------------------------
+  #      AUTHENTICATION      #
+  # ------------------------
 
-  get '/users/:id', to: 'users#show'
+  resources :users do
+    collection do
+      post '/login', to: 'users#login'
+    end
+  end
 
-  post '/users', to: 'users#create'
+  # get '/users', to: 'users#index'
+  #
+  # get '/users/:id', to: 'users#show'
+  #
+  # post '/users', to: 'users#create'
+  #
+  # delete '/users/:id', to: 'users#delete'
+  #
+  # put '/users/:id', to: 'users#update'
 
-  delete '/users/:id', to: 'users#delete'
-
-  put '/users/:id', to: 'users#update'
 
   # ------------------------
   #      POSTS ROUTES      #
@@ -29,5 +41,6 @@ Rails.application.routes.draw do
 
   # UPDATE ROUTE
   put '/posts/:id', to: 'posts#update'
+
 
 end
