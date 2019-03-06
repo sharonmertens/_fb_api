@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # LOGIN /users/login
   def login
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
