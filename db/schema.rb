@@ -22,15 +22,14 @@ ActiveRecord::Schema.define(version: 2019_03_02_015010) do
     t.string "link", limit: 256
     t.integer "likes"
     t.integer "dislikes"
-    t.string "author", limit: 256
+    t.string "author_id", limit: 256
   end
 
-  create_table "user_profile", id: false, force: :cascade do |t|
-    t.serial "id", null: false
+  create_table "profiles", id: false, force: :cascade do |t|
+    t.integer "user_id"
     t.date "birthday"
     t.string "image", limit: 256
     t.text "bio"
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
