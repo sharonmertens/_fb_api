@@ -3,14 +3,14 @@
 Created By: Anna Lornitzo & Sharon Mertens
 
 #### Deployed on Heroku:
-Deployed on Heroku Backend: https://antifb.herokuapp.com/
+[Heroku Backend](https://antifb.herokuapp.com/)
 
-Deployed on Heroku Frontend: https://notfb.herokuapp.com/
+[Heroku Frontend](https://notfb.herokuapp.com/)
 
-GitHub:
-Anna Lornitzo: https://github.com/lornitzoa/_fb_api
+#### Github:
+[Anna Lornitzo Github](https://github.com/lornitzoa/notfb_frontend)
 
-GitHub: Sharon Mertens: https://github.com/sharonmertens/_fb_api
+[Sharon Mertens Github](https://github.com/sharonmertens/notfb_frontend)
 
 
   * Ruby version: 2.6.1
