@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   #      AUTHENTICATION      #
   # ------------------------
 
+  get '/', to: 'users#index'
 
   resources :users do
     collection do
+
       post '/login', to: 'users#login'
 
       post '/register', to: 'users#register'
