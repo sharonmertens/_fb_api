@@ -65,6 +65,7 @@ class Post
 
   # UPDATE
   def self.update(id, opts)
+    puts opts
     results = DB.exec(
       <<-SQL
         UPDATE posts

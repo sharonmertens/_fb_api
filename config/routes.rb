@@ -1,15 +1,36 @@
 Rails.application.routes.draw do
+
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/users', to: 'users#index'
+  # Heroku Welcome Page
 
-  get '/users/:id', to: 'users#show'
 
-  post '/users', to: 'users#create'
 
-  delete '/users/:id', to: 'users#delete'
+  # ------------------------
+  #      AUTHENTICATION      #
+  # ------------------------
 
-  put '/users/:id', to: 'users#update'
+
+  resources :users do
+    collection do
+      post '/login', to: 'users#login'
+
+      post '/register', to: 'users#register'
+
+    end
+  end
+
+  # get '/users', to: 'users#index'
+  #
+  # get '/users/:id', to: 'users#show'
+  #
+  # post '/users', to: 'users#create'
+  #
+  # delete '/users/:id', to: 'users#delete'
+  #
+  # put '/users/:id', to: 'users#update'
+
 
   # ------------------------
   #      POSTS ROUTES      #
@@ -29,5 +50,6 @@ Rails.application.routes.draw do
 
   # UPDATE ROUTE
   put '/posts/:id', to: 'posts#update'
+
 
 end
